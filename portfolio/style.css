@@ -1,0 +1,60 @@
+
+#jeNeSaisPasOuJeSuis {
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+}
+#hero {
+    background-image: url("./Assets/Images/Rainbow\ Fire\ Trebbl3.jpg");
+    background-color: black;
+    height:auto;
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+
+}
+h1, p {
+    color: white;
+}
+#contactH1, #portfolioH1{
+    color:black;
+}
+#contactH1Div, #portfolioH1Div {
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);  
+margin-bottom: 3vh;
+}
+
+#contactH1, .contactInfo {
+    text-align: center;
+}
+
+
+
+body {
+    width: 100%;
+    background-color: black;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+hr {
+    color: gray;
+}
+
+#contact{
+    background-color: white;
+    margin: 10vh 5vh 10vh 5vh;
+    padding-bottom: 2vh;
+    max-width: 600px;
+}
+#contactSubmit {
+    padding: 2vh 4vh 2vh 4vh;
+    background-image: radial-gradient( red 20%,orange,yellow,green,blue,indigo,violet);
+    
+}
+#portfolioContainer{
+    background-color: white;
+    max-width: 350px;
+    margin: 10vh 10vh 5vh 5vh;
+    padding-bottom: 2vh;
+}
