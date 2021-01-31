@@ -131,7 +131,8 @@ function intervalSet(){
     var interval = setInterval(function(){
     timer--
     clock.innerText = timer;
-    if (timer === 0){
+    if (timer <= 0){
+        clock.style.display = "none";
         question.innerText = "Time over you scored " + score + " points!"; 
         console.log(score + "points Quiz Over");
         a.style.visibility = "hidden";
@@ -142,6 +143,10 @@ function intervalSet(){
         letterheadB.style.visibility = "hidden";
         letterheadC.style.visibility = "hidden";
         letterheadD.style.visibility = "hidden";
+        var initials = prompt("Please enter your initials.", "Initials Here");
+        localStorage.setItem("Initials", initials);
+        localStorage.setItem("Score", score);
+        resetButton.style.display = "initial";
         clearInterval(interval);
     }
     if(isOver === true){
