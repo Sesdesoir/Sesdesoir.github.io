@@ -1,0 +1,74 @@
+.navbar {
+    background-color: rgb(14, 14, 14) ;
+}
+.navbar-item{
+    color: white;
+}
+
+.navbar-link{
+    color: white;
+}
+
+.dropdown-navbar{
+    color: black;
+}
+
+.website-title{
+    font-family: 'Patua One', cursive;
+    font-style: bold;
+    color:white;
+}
+
+.search-buttons{
+    font-family: 'Patua One', cursive;
+}
+
+h1 {
+text-align: center;
+} 
+
+p {
+    text-align: center;
+    align-content: center; 
+    border: 1px solid white;   
+}
+
+.card-header {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}
+
+.topbox{
+       background-color: black;
+   }
+
+.page-content{
+    background-color: black;
+    font-family: 'Patua One', cursive;
+}
+
+.column{
+    border-style:solid;
+    border-color: slategray;
+}
+
+.card-background{
+    background-color: darkslategray;
+    color: white;
+}
+
+.has-bg-img { 
+    background: url("./images/WebDev.jpg")
+    center center; 
+    background-size:cover; 
+}
+.pskill{
+    font-weight: bold;
+}
+
+#search-history{
+    font-family: 'Patua One', cursive;
+    font: white;
+}
