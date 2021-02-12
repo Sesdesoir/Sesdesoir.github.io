@@ -54,7 +54,7 @@ function jobSearch() {
     } else {
       var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?description=' + searchTerm;
     }
-
+}
 // Skill search button call
 
 $("#skill-search").click(function (event) {
