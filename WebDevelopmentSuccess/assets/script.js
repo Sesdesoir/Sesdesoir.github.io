@@ -47,7 +47,7 @@ function jobSearch() {
     resultsCards.innerHTML = "";
     var searchTerm = "";
     searchTerm = document.getElementById("search-bar").value;
-    var requestUrl = 'https://jobs.github.com/positions.json?description=' + searchTerm;
+    var requestUrl = 'https://cors-anywhere.herokuapp.com/jobs.github.com/positions.json?description=' + searchTerm;
 
   // Fetch request to Github Jobs API
   fetch(requestUrl)
