@@ -36,7 +36,6 @@ function saveSearch() {
     else{
       var li = document.createElement("li");
        li.textContent = JSON.parse(localStorage.getItem("search-history"))[JSON.parse(localStorage.getItem("search-history")).length -1 -i];
-       li.className("searchLi");
       searchList.appendChild(li);
     }
   }
