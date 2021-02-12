@@ -71,7 +71,7 @@ function getSkills(){
     var jobTitles = [];
     var counter=0;
     //first fetch
-    fetch("https://api.dataatwork.org/v1/jobs/autocomplete?contains=" + document.getElementById("search-bar").value).then(function(response){
+    fetch("http://api.dataatwork.org/v1/jobs/autocomplete?contains=" + document.getElementById("search-bar").value).then(function(response){
         if(response.ok){
         response.json().then(function(apidata) {
           for(var i=0; i< 10; i++){
@@ -86,7 +86,7 @@ function getSkills(){
             //second fetch
             //I need this part done per job
             for(var i=0; i<uuids.length; i++){
-            fetch("https://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){
+            fetch("http://api.dataatwork.org/v1/jobs/" + uuids[i] + "/related_skills").then(function(respond){
             if(respond.ok){
             respond.json().then(function(data){
              //html element creation
