@@ -1,0 +1,18 @@
+{
+  "name": "team-profile-builder",
+  "version": "1.0.0",
+  "description": "## Your Task",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "fs": "^0.0.1-security",
+    "email-validator": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
