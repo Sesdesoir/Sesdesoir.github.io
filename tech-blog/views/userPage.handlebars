@@ -1,0 +1,178 @@
+
+
+
+<section class="container-fluid" style="background-image: url("https://i0.hippopx.com/photos/767/117/174/background-computer-screen-wallpaper-desktop-preview.jpg"); background-size: cover; background-repeat: no-repeat; background-position: center; height: 100vh;">
+<container class="container-fluid" style="background-color:none;">
+    <div class="row justify-content-md-center" style="margin-top: 2vh;">
+        <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#modalNewPost" style="background: linear-gradient(to bottom right, rgb(70,20,67) , rgb(132,29,110) , rgb(86,78,137) , rgb(40,144,167) , rgb(27,80,106)); color: rgb(197, 195, 198); font-weight:bold;">Create Post</button>
+    </div>
+    <!-- New Post Modal -->
+    <div class="modal fade" id="modalNewPost" aria-labelledby="modalNewPost" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="mb-3">
+      <label for="postTitle" class="form-label">Post Title</label>
+      <input type="text" class="form-control" placeholder="Title" aria-label="Post Title" id="newTitle">
+      <label for="newPost" class="form-label">Post</label>
+      <textarea class="form-control" id="newPost" rows="3"></textarea>
+      <input type="submit" value="Submit" id="newPostSubmit">
+    </div>
+    </div>
+  </div>
+</div>
+</container>
+<!-- Body with all Posts -->
+{{#if (isDefined user.Posts)}}
+<div class="container-fluid justify-content-md-center" style="margin-top: 2vh;">
+   <h1 style="text-align: center;">Posts</h1>
+  {{#each user.Posts as |post|}}
+    <div class="card" id="postCard{{post.id}}" style="margin: 2.5vh 0 2.5vh 5vh;" >
+      <div class="card-header" id="postCardHead{{post.id}}">{{post.user.name}}</div>
+      <div class="card-body">
+      <h5 class="card-title" id="postUserName{{post.user_id}}">{{post.post_title}}</h5>
+      <p class="card-text" id="postBody{{post.id}}">{{post.post_body}}</p>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDiscussion{{post.id}}">
+      View Discussion
+      </button>
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalupdate{{post.id}}">
+        Update
+      </button>
+      <button type="button" class="btn btn-danger postDelete" data-bs-toggle="modal" id="postDelete{{post.id}}" data-store="{{post.id}}">
+        Delete
+      </button>
+      </div>
+    </div>
+
+    <!-- Update Modal for posts-->
+        <div class="modal fade" id="modalupdate{{post.id}}" aria-labelledby="modalupdate{{post.id}}" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="mb-3">
+      <label for="updateTitle{{post.id}}" class="form-label">Post Title</label>
+      <input type="text" class="form-control" placeholder="Title" value="{{post.post_title}}" aria-label="Post Title" id="updateTitle{{post.id}}">
+      <label for="updatePost{{post.id}}" class="form-label">Post</label>
+      <textarea class="form-control" id="updatePost{{post.id}}" rows="3">{{post.post_body}}</textarea>
+      <input type="submit" value="Submit" class="updatePostButton" id="updatePostSubmit{{post.id}}" data-store="{{post.id}}">
+    </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Vertically centered scrollable modal -->
+<div class="modal fade modal-xl" tabindex="-1" id="modalDiscussion{{post.id}}" aria-labelledby="modalDiscussion{{post.id}}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalPostTitle{{post.id}}">{{post_title}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{post.post_body}}
+      </div>
+      <div class="modal-body">
+        {{#each post.Comments as |comments|}}
+          <div class="card" id="postCard{{comments.id}}" >
+          <div class="card-header" id="postCardHead{{comments.id}}">{{comments.user.name}}</div>
+          <div class="card-body">
+          <p class="card-text" id="postBody{{comments.id}}">{{comments.comment_body}}</p>
+          </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!--Second Modal Trigger-->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#postcomment{{post.id}}" data-bs-dismiss="modal">Comment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="postcomment{{post.id}}" aria-labelledby="postcomment{{post.id}}" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="mb-3">
+      <label for="newComment{{post.id}}" class="form-label">Comment</label>
+      <textarea class="form-control" id="newComment{{post.id}}" rows="3" value="{{post.id}}"></textarea>
+      <input type="submit" value="Submit" class="newCommentSubmit" title="{{post.id}}">
+    </div>
+    </div>
+  </div>
+</div>
+    {{/each}}
+
+</div>
+{{/if}}
+<!-- Comments-->
+<container class="container-fluid ">
+{{#if (isDefined user.Comments)}}
+<h1 style="text-align: center;">Comments</h1>
+{{#each user.Comments as |comment|}}
+<div class="card" id="commentCard{{comment.id}}" style="margin: 2.5vh 0 2.5vh 5vh;" >
+      <div class="card-header" id="commentCardHead{{comment.id}}"></div>
+      <div class="card-body">
+      <h5 class="card-title" id="commentUserName{{comment.id}}"></h5>
+      <p class="card-text" id="commentBody{{comment.id}}">{{comment.comment_body}}</p>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalCommentDiscussion{{comment.Post.id}}">
+      View Discussion
+      </button>
+      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#commentModalUpdate{{comment.id}}">
+        Update
+      </button>
+      <button type="button" class="btn btn-danger commentDelete" data-bs-toggle="modal" id="commentDelete{{comment.id}}" data-store="{{comment.id}}">
+        Delete
+      </button>
+      </div>
+    </div>
+
+    <!-- View Discussion Modal for Comments -->
+      <div class="modal fade modal-xl" tabindex="-1" id="modalCommentDiscussion{{comment.Post.id}}" aria-labelledby="modalCommentDiscussion{{comment.Post.id}}" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalCommentPostTitle{{comment.Post.id}}">{{comment.Post.post_title}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        {{comment.Post.post_body}}
+      </div>
+      <div class="modal-body">
+        {{#each comment.Post.Comments as |comments|}}
+          <div class="card" id="postCard{{comments.id}}" >
+          <div class="card-header" id="postCardHead{{comments.id}}">{{comments.user.name}}</div>
+          <div class="card-body">
+          <p class="card-text" id="postBody{{comments.id}}">{{comments.comment_body}}</p>
+          </div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+      <!-- Update modal for comments -->
+          <div class="modal fade" id="commentModalUpdate{{comment.id}}" aria-labelledby="commentModalUpdate{{comment.id}}" aria-hidden="true" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="mb-3">
+      <label for="updateComment{{comment.id}}" class="form-label">Comment</label>
+      <textarea class="form-control" id="updateComment{{comment.id}}" rows="3">{{comment.comment_body}}</textarea>
+      <input type="submit" value="Submit" class="updateCommentButton" id="updateCommentSubmit{{comment.id}}" data-store="{{comment.id}}">
+    </div>
+    </div>
+  </div>
+</div>
+    {{/each}}
+{{/if}}
+</container>
+</section>
+<script src="/js/newComment.js"></script>
+<script src="/js/newPost.js"></script>
+<script src="/js/updatePost.js"></script>
+<script src="/js/updateComment.js"></script>
+<script src="/js/delete.js"></script>

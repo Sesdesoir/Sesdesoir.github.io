@@ -1,0 +1,17 @@
+.hero-image{
+    background-image: url("https://i0.hippopx.com/photos/767/117/174/background-computer-screen-wallpaper-desktop-preview.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.pageFont{
+    color: rgb(197, 195, 198);
+}
+
+.login-form .signUp-form{
+    font-size:x-large;
+}
+
+/* rgb(27,80,106), rgb(40,144,167) ,rgb(86,78,137) , rgb(132,29,110) ,rgb(70,20,67)*/
