@@ -1,6 +1,6 @@
 {
-  "short_name": "BudgetTraveler",
-  "name": "Budget Travel App",
+  "short_name": "Budget",
+  "name": "Budget Tracker",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
