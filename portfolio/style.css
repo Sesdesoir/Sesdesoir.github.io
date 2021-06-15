@@ -16,7 +16,7 @@
 h1, p {
     color: white;
 }
-#contactH1, #portfolioH1{
+#contactH1, #portfolioH1, #github{
     color:black;
 }
 #contactH1Div, #portfolioH1Div {
@@ -55,6 +55,6 @@ hr {
 #portfolioContainer{
     background-color: white;
     max-width: 350px;
-    margin: 10vh 10vh 5vh 5vh;
+    margin: 10vh 0 5vh 5vh;
     padding-bottom: 2vh;
 }
